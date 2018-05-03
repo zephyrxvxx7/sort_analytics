@@ -15,7 +15,11 @@ if __name__ == '__main__':
         randint_list = [[randint(0, 2 ** 31 - 1)
                          for _ in range(N)] for _ in range(25)]
         for i in range(25):
+            pool.apply_async(sorts.bubble_sort, (randint_list[i], ))
+            pool.apply_async(sorts.insertion_sort, (randint_list[i], ))
+            pool.apply_async(sorts.selection_sort, (randint_list[i], ))
             pool.apply_async(sorts.quick_sort, (randint_list[i], ))
+            pool.apply_async(sorts.heap_sort, (randint_list[i], ))
 
     pool.close()
     pool.join()
