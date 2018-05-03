@@ -1,16 +1,15 @@
 import logging
 from time import clock
-from random import randint
 
 
 # decorator
 def time_analytics(func):
     def my_wrap(*args, **kwargs):
-        logging.info('Starting {0}'.format(func.__name__))
+        logging.info('Starting {0}(N = {1})'.format(func.__name__, len(*args)))
         t0 = clock()
         func(*args, **kwargs)
-        logging.info('Ending {0} in {1} sec'.format(
-            func.__name__, clock() - t0))
+        logging.info('Ending {0}(N = {1}) in {2} sec'.format(
+            func.__name__, len(*args), clock() - t0))
     return my_wrap
 
 
@@ -104,8 +103,3 @@ def heap_sort(list_):
         list_[0], list_[end] = list_[end], list_[0]
         heapify(0, end - 1)
     return list_
-
-
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
-    quick_sort([randint(0, 2 ** 31 - 1) for _ in range(3000000)])
