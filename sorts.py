@@ -1,15 +1,20 @@
 import logging
 from time import clock
+from random import randint
+from functools import wraps
 
 
 # decorator
 def time_analytics(func):
+    @wraps(func)
     def my_wrap(*args, **kwargs):
         logging.info('Starting {0}(N = {1})'.format(func.__name__, len(*args)))
         t0 = clock()
         func(*args, **kwargs)
-        logging.info('Ending {0}(N = {1}) in {2} sec'.format(
-            func.__name__, len(*args), clock() - t0))
+        use_time = clock() - t0
+        logging.info('Ending   {0}(N = {1}) in {2} sec'.format(
+            func.__name__, len(*args), use_time))
+        return use_time
     return my_wrap
 
 
@@ -103,3 +108,19 @@ def heap_sort(list_):
         list_[0], list_[end] = list_[end], list_[0]
         heapify(0, end - 1)
     return list_
+
+
+if __name__ == '__main__':
+    #N_list = [50000, 100000, 150000, 200000, 250000, 300000]
+    N_list = [300000]
+    for N in N_list:
+        randint_list = [randint(0, 2 ** 31 - 1) for _ in range(N)]
+        bubble_sort(randint_list)
+        randint_list = [randint(0, 2 ** 31 - 1) for _ in range(N)]
+        insertion_sort(randint_list)
+        randint_list = [randint(0, 2 ** 31 - 1) for _ in range(N)]
+        selection_sort(randint_list)
+        randint_list = [randint(0, 2 ** 31 - 1) for _ in range(N)]
+        quick_sort(randint_list)
+        randint_list = [randint(0, 2 ** 31 - 1) for _ in range(N)]
+        heap_sort(randint_list)
