@@ -12,7 +12,7 @@ def draw_figure(dict_):
     for figure_name in dict_.keys():
         dict_[figure_name]['color'] = np.random.rand(3)
 
-        plt.plot([i for i in dict_[figure_name].keys()],
+        plt.plot([i / 1000 for i in dict_[figure_name].keys()],
                  [np.mean(i) for i in dict_[figure_name].values()],
                  'o-', color=dict_[figure_name]['color'])
 
