@@ -1,8 +1,10 @@
-# sort_analytics
-106下學期演算法作業一
+# sort analytics
+Algorithm HW1. Spring, 2018
 
-##Requirements:
-multiprocessing
-matplotlib
-numpy
-openpyxl
+<h3 id="list">Requirements</h3>
+--
+    *   python
+    *   multiprocessing
+    *   matplotlib
+    *   numpy
+    *   openpyxl
