@@ -10,8 +10,8 @@ from result_output import draw_figure, write_xlxs
 if __name__ == '__main__':
     t0 = clock()
 
-    N_list = [5000, 10000, 15000]
-    ROUND = 3
+    N_list = [50000, 100000, 150000, 200000, 250000, 300000]
+    ROUND = 25
 
     logging.basicConfig(level=logging.INFO)
     pool = Pool(processes=8)
