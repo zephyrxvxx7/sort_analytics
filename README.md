@@ -1,10 +1,10 @@
 # sort analytics
 Algorithm HW1. Spring, 2018
 
-<h3 id="list">Requirements</h3>
+Requirements
 --
-    *   python
-    *   multiprocessing
-    *   matplotlib
-    *   numpy
-    *   openpyxl
+    python
+    multiprocessing
+    matplotlib
+    numpy
+    openpyxl
