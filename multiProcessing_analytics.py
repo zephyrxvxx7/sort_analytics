@@ -1,18 +1,17 @@
 from multiprocessing import cpu_count, Pool
-from multiprocessing.pool import ThreadPool
 from random import randint
 import logging
 from copy import copy, deepcopy
 from time import clock
 
 import sorts
-from result_output import draw_figure
+from result_output import draw_figure, write_xlxs
 
 if __name__ == '__main__':
     t0 = clock()
 
-    N_list = [50000, 100000, 150000]
-    ROUND = 5
+    N_list = [5000, 10000, 15000]
+    ROUND = 3
 
     logging.basicConfig(level=logging.INFO)
     pool = Pool(processes=8)
@@ -65,3 +64,4 @@ if __name__ == '__main__':
             count = count + 5
 
     draw_figure(results_dict)
+    write_xlxs(results_dict)
