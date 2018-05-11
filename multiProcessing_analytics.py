@@ -2,13 +2,13 @@ from multiprocessing import cpu_count, Pool
 from random import randint
 import logging
 from copy import copy, deepcopy
-from time import clock
+from time import clock, time
 
 import sorts
 from result_output import draw_figure, write_xlxs
 
 if __name__ == '__main__':
-    t0 = clock()
+    start_time = time()
 
     N_list = [50000, 100000, 150000, 200000, 250000, 300000]
     ROUND = 25
@@ -36,8 +36,8 @@ if __name__ == '__main__':
     pool.close()
     pool.join()
 
-    use_time = clock() - t0
-    print('Total used time: {}'.format(use_time))
+    used_time = time() - start_time
+    print('\nTotal used time: {}'.format(used_time))
 
     N_list_dict = {N: [] for N in N_list}
 
@@ -65,3 +65,5 @@ if __name__ == '__main__':
 
     draw_figure(results_dict)
     write_xlxs(results_dict)
+
+    print('Done')
