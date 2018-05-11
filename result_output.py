@@ -34,7 +34,7 @@ def draw_figure(dict_):
                  label=figure_name)
         plt.xticks(np.asarray([i for i in dict_[figure_name].keys()]))
 
-    plt.xlabel('# of elements (1000\'s)')
+    plt.xlabel('# of elements')
     plt.ylabel('Time (seconds)')
     plt.title('Sorting Analytics Figure')
     plt.legend()
