@@ -8,16 +8,16 @@ from random import randint
 
 def draw_figure(dict_):
     plt.style.use('ggplot')
-
+    color_dict = dict()
     for figure_name in dict_.keys():
-        dict_[figure_name]['color'] = np.random.rand(3)
+        color_dict[figure_name] = np.random.rand(3)
 
-        plt.plot([i / 1000 for i in dict_[figure_name].keys()],
+        plt.plot([i for i in dict_[figure_name].keys()],
                  [np.mean(i) for i in dict_[figure_name].values()],
-                 'o-', color=dict_[figure_name]['color'])
+                 'o-', color=color_dict[figure_name])
 
         plt.xticks(np.asarray([i for i in dict_[figure_name].keys()]))
-        plt.xlabel('# of elements (1000\'s)')
+        plt.xlabel('# of elements')
         plt.ylabel('Time (seconds)')
         plt.title('{0} Figure'.format(figure_name))
 
@@ -28,12 +28,11 @@ def draw_figure(dict_):
 
     for figure_name in dict_.keys():
 
-        plt.plot([i for i in dict_[figure_name].keys()[:-1]],
-                 [np.mean(i) for i in dict_[figure_name].values()[:-1]],
-                 'o-', color=dict_[figure_name]['color'],
+        plt.plot([i for i in dict_[figure_name].keys()],
+                 [np.mean(i) for i in dict_[figure_name].values()],
+                 'o-', color=color_dict[figure_name],
                  label=figure_name)
-        plt.xticks(np.asarray([i for i in dict_[figure_name].keys()[:-1]]))
-        dict_[figure_name].pop('color')
+        plt.xticks(np.asarray([i for i in dict_[figure_name].keys()]))
 
     plt.xlabel('# of elements (1000\'s)')
     plt.ylabel('Time (seconds)')
